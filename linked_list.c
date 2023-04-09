@@ -56,6 +56,7 @@ void add_all(lnode** head, int* array, int size_of_array) {
     }
 }
 
+// LL_ADD_INDEX
 /*
 returns 0 in case of success, -1 otherwise
 */
@@ -96,6 +97,7 @@ int add_index(lnode** head, int index, int v) {
     return 0;
 }
 
+// LL_INDEX_OF
 int index_of(lnode* head, int val) {
     int i=0;
     while (head != NULL)
@@ -109,12 +111,14 @@ int index_of(lnode* head, int val) {
     return -1;
 }
 
+// LL_GET_FIRST_VAL
 int get_first(lnode* head) {
     if (head == NULL)
         return INT_MIN;
     return head->val;
 }
 
+// LL_GET_LAST
 int get_last(lnode* head) {
     if (head == NULL) {
         return INT_MIN;
@@ -125,6 +129,7 @@ int get_last(lnode* head) {
     return head->val;
 }
 
+// LL_REMOVE_FIRST
 int remove_first(lnode** head) {
     if (head == NULL)
         return INT_MIN;
@@ -135,6 +140,7 @@ int remove_first(lnode** head) {
     return v;
 } 
 
+// LL_REMOVE_LAST
 int remove_last(lnode** head) {
     if (*head == NULL) {
         return INT_MIN;
@@ -157,10 +163,12 @@ int remove_last(lnode** head) {
     return v;    
 }
 
+// LL_SEARCH_SCALAR
 int contains(lnode *head, int val) {
     return index_of(head, val) != -1;
 }
 
+// LL_COUNT
 int size(lnode *head) {
     int size=0;
     while (head != NULL)
@@ -171,6 +179,7 @@ int size(lnode *head) {
     return size;
 }
 
+// LL_REMOVE_VAL
 /*
 returns index if `v` is removed from the list
 */
@@ -204,6 +213,7 @@ int remove_val(lnode** head, int v) {
     return -1;
 }
 
+// LL_CLEAR
 void clear(lnode **head) {
     int s = size(*head);
     while (s>0) {
@@ -212,6 +222,7 @@ void clear(lnode **head) {
     }    
 }
 
+// LL_LAST_INDEX_OF
 int last_index_of(lnode *head, int v) {
     int index = -1, i = 0;
 
@@ -227,6 +238,7 @@ int last_index_of(lnode *head, int v) {
     return index;    
 }
 
+// LL_CLONE
 void clone(lnode* src, lnode** dest) {
     while (src != NULL)
     {
