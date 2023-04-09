@@ -9,6 +9,7 @@ struct list_node {
 
 typedef struct list_node lnode;
 
+// LL_PRINT_ALL
 void print_list(lnode* temp) {
     // printf("Begin\n");
     while (temp != NULL)
@@ -20,6 +21,7 @@ void print_list(lnode* temp) {
     printf("\n");
 }
 
+// LL_PREPEND
 void add_first(lnode** head, int v) {
     lnode* new = malloc(sizeof(lnode));
     new->val = v;
@@ -27,6 +29,7 @@ void add_first(lnode** head, int v) {
     *head = new;
 }
 
+// LL_APPEND
 void add_last(lnode** head, int v) {
     lnode* new = malloc(sizeof(lnode));
     new->val = v;
@@ -45,6 +48,7 @@ void add_last(lnode** head, int v) {
     return;
 }
 
+// LL_ADD_ALL
 void add_all(lnode** head, int* array, int size_of_array) {
     int i=0;
     for(;i<size_of_array;i++) {

@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include"utlist.h"
 
 typedef struct element {
@@ -8,32 +9,30 @@ typedef struct element {
     struct element *next; /* needed for singly- or doubly-linked lists */
 } element;
 
-element* new_node(char* name) {
-    element* new = malloc(sizeof(element));
-    new->name = name;
-    return new;
+int namecmp(element* a, element* b) {
+    return strcmp(a->name, b->name);
 }
+#define LL_PRINT_ALL(head, el) \
+    printf("---\n");\
+    LL_FOREACH(head, el) printf(" %s =>", el->name); \
+    printf("---\n");
+
+#define LL_CREATE_ELEM(e, n) \
+    e = malloc(sizeof(element)); \
+    e->name = n; \
+    e->next = NULL;
+
+#define LL_ADD_ALL(head, e, array, i, size) \
+    for (i=0; i<size; i++) { \
+        LL_CREATE_ELEM(e,array[i]); \
+        LL_APPEND(head, e); \
+    }
 
 int main() {
-    element *head1 = NULL, *head2 = NULL, *e = NULL;
-    element *new1 = new_node("Name1");
-    element *new2 = new_node("Name2");
-    element *new3 = new_node("Name3");
-    element *new4 = new_node("Name4");
+    element *head1 = NULL, *head2 = NULL, *e = NULL, *like = NULL;
+    char* array[5]={"Name1", "Name2", "Name3", "Name4", "Name5"};
+    int i;
 
-    LL_PREPEND(head1, new1);
-    LL_PREPEND(head1, new2);
-    LL_FOREACH(head1, e) printf("(%p,%s) ->\n", e, e->name);
-
-    LL_PREPEND(head2, new3);
-    LL_PREPEND(head2, new4);
-    LL_FOREACH(head1, e) printf("(%p,%s) ->\n", e, e->name);
-
-    LL_CONCAT(head1, head2);
-
-    e = NULL;
-    LL_SEARCH_SCALAR(head1, e, name, "Name2");
-    if (e)
-        printf("%s", e->name);
-
+    LL_ADD_ALL(head1, e, array, i, 5);
+    LL_PRINT_ALL(head1, e);
 }
